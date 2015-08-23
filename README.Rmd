@@ -1,0 +1,11 @@
+---
+title: "readme"
+output: html_document
+---
+
+The repository contains 3 files:
+1) "run_analysis.R" - an R script that organizes and summarizes data about an experiment that have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. The researchers captured 3-axial linear acceleration and 3-axial angular velocity. The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. (source: README.txt)
+The script merges the training and the test sets to create one data set, extracts the measurements on the mean and standard deviation for each measurement, 
+assigns descriptive activity names to name the activities in the data set, labels the data set with descriptive variable names, and creates a second data set with the average of each variable for each activity and each subject. 
+2) CodeBook.Rmd - this file contains information about that different variables and the transformations that have been done to create them.
+3) README.Rmd - this file contains information about the different files in the repository.

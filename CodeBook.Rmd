@@ -1,0 +1,91 @@
+---
+title: "CodeBook"
+output: html_document
+---
+
+The variables that are contained in the final table that is summarised to get the average values grouped by subject and activity are the following (most of them are self explanatory since their labels are descriptive).
+
+"subject" - indicates which of the 30 subject was used to record the measures in the respective row
+"activity" - indicates which activity the subject undertook to record the measures                                                       
+"time domain-body acceleration signal-mean()-X"                   
+"time domain-body acceleration signal-mean()-Y"                   
+"time domain-body acceleration signal-mean()-Z"                  
+"time domain-body acceleration signal-std()-X"                    
+"time domain-body acceleration signal-std()-Y"                   
+"time domain-body acceleration signal-std()-Z"                    
+"time domain-gravity acceleration signal-mean()-X"               
+"time domain-gravity acceleration signal-mean()-Y"              
+"time domain-gravity acceleration signal-mean()-Z"               
+"time domain-gravity acceleration signal-std()-X"                
+"time domain-gravity acceleration signal-std()-Y"                
+"time domain-gravity acceleration signal-std()-Z"                
+"time domain-body acceleration jerk signal-mean()-X"             
+"time domain-body acceleration jerk signal-mean()-Y"              
+"time domain-body acceleration jerk signal-mean()-Z"             
+"time domain-body acceleration jerk signal-std()-X"              
+"time domain-body acceleration jerk signal-std()-Y"              
+"time domain-body acceleration jerk signal-std()-Z"              
+"time domain-angular velocity-mean()-X"                          
+"time domain-angular velocity-mean()-Y"                          
+"time domain-angular velocity-mean()-Z"                          
+"time domain-angular velocity-std()-X"                           
+"time domain-angular velocity-std()-Y"                           
+"time domain-angular velocity-std()-Z"                           
+"time domain-angular velocity jerk signal-mean()-X"              
+"time domain-angular velocity jerk signal-mean()-Y"               
+"time domain-angular velocity jerk signal-mean()-Z"              
+"time domain-angular velocity jerk signal-std()-X"               
+"time domain-angular velocity jerk signal-std()-Y"               
+"time domain-angular velocity jerk signal-std()-Z"                
+"time domain-body acceleration signal magnitude-mean()"          
+"time domain-body acceleration signal magnitude-std()"            
+"time domain-gravity acceleration signal magnitude-mean()"       
+"time domain-gravity acceleration signal magnitude-std()"         
+"time domain-body acceleration jerk signal magnitude-mean()"     
+"time domain-body acceleration jerk signal magnitude-std()"       
+"time domain-angular velocity magnitude-mean()"                  
+"time domain-angular velocity magnitude-std()"                    
+"time domain-angular velocity jerk signal magnitude-mean()"      
+"time domain-angular velocity jerk signal magnitude-std()"       
+"frequency domain-body acceleration signal-mean()-X"             
+"frequency domain-body acceleration signal-mean()-Y"            
+"frequency domain-body acceleration signal-mean()-Z"             
+"frequency domain-body acceleration signal-std()-X"              
+"frequency domain-body acceleration signal-std()-Y"              
+"frequency domain-body acceleration signal-std()-Z"              
+"frequency domain-body acceleration jerk signal-mean()-X"        
+"frequency domain-body acceleration jerk signal-mean()-Y"        
+"frequency domain-body acceleration jerk signal-mean()-Z"        
+"frequency domain-body acceleration jerk signal-std()-X"         
+"frequency domain-body acceleration jerk signal-std()-Y"         
+"frequency domain-body acceleration jerk signal-std()-Z"          
+"frequency domain-angular velocity-mean()-X"                     
+"frequency domain-angular velocity-mean()-Y"                      
+"frequency domain-angular velocity-mean()-Z"                     
+"frequency domain-angular velocity-std()-X"                       
+"frequency domain-angular velocity-std()-Y"                      
+"frequency domain-angular velocity-std()-Z"                       
+"frequency domain-body acceleration signal magnitude-mean()"     
+"frequency domain-body acceleration signal magnitude-std()"       
+"frequency domain-body acceleration jerk signal magnitude-mean()"
+"frequency domain-body acceleration jerk signal magnitude-std()"  
+"frequency domain-angular velocity signal magnitude-mean()"      
+"frequency domain-angular velocity signal magnitude-std()"        
+"frequency domain-angular velocity jerk signal magnitude-mean()" 
+"frequency domain-angular velocity jerk signal magnitude-std()"
+
+To get to the final output the following operations have been performed.
+
+The first step was to merge the training and the test sets to create one data set with the help of the rbind function.
+The second step was to extract only the measurements of the mean and standard deviation for each measurement which was 
+evident from the "features.txt" file. The numbers of the columns who contain "mean()" or "std()" in the name were extracted with the help
+of the "grep" function only these columns were extracted from the combined data set.
+Next the activity names were appended to the data set as a first column and each class was replaced with its descriptive label (e.g. 1 was replaced with "WALKING").
+The next step was to take the names of the columns from the "features.txt" file and to replace them with more descriptive names (e.g the abbreviated "tBodyAcc" was replaced with the more descriptive "time domain-body acceleration signal"). The descriptive names of the columns were then appended to the 
+top of the data set.
+Finally, a second,independent tidy data set with the average of each variable for each activity and each subject was created. First  the codes of the 
+30 subjects were appended to the begining of the  data set in the beginning as a column with the label "subject". Then the "group_by" and the "summarise_each"
+functions from the "dplyr" package were used to group the variables by activity and by subject and to calculate the respective averages of each variable
+for each activity and each subject. The results were written to a text file "tidy_data_set.txt" with the help of the "write.table" function.
+
+
